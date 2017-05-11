@@ -1,0 +1,25 @@
+{
+  "name": "scorpio",
+  "version": "1.0.0",
+  "description": "webapp to control scorpIO",
+  "main": "weatherAPI.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthurmoises/scorpIO.git"
+  },
+  "keywords": [
+    "iot",
+    "accontrol"
+  ],
+  "author": "Arthur Moisés",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/arthurmoises/scorpIO/issues"
+  },
+  "homepage": "https://github.com/arthurmoises/scorpIO#readme"
+}
