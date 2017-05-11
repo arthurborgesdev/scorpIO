@@ -14,25 +14,26 @@ var getWeather = function(lat, lon) {
                     + lon
                     + "&APPID="
                     + openWeatherMapKey;
-  request.get(targeURL, function(error, response, body) {
+  request.get(targetURL, function(error, response, body) {
     if (error) throw error;
-    console.log(body);
+    var resultsWeather = JSON.parse(body);
+    console.log("Temperature is: " + (resultsWeather.main.temp-273)); // convert farenheit to celsius
   });
 }
 
-var getIP = function(ipAPIURL) {
+var getIP = function(ipAPIURL, callback) {
   request.get(ipAPIURL, function(error, response, body) {
     if (error) throw error;
     var jP = JSON.parse(body);
     var geoCoordinates = { "lat": jP.lat, "lon": jP.lon};
-    //return geoCoordinates;
+    callback(geoCoordinates.lat, geoCoordinates.lon);
   });
-  console.log(geoCoordinates);
+
 }
 
 
-getIP(ipAPIURL);
-  //.pipe(request.put('http://mysite.com/img.png'))
+getIP(ipAPIURL, getWeather);
+
 
 /*
 
@@ -55,33 +56,10 @@ var processLocale = function() {
   getTemperature(lat, lon, city);
 }
 
-var getTemperature = function(lat, lon, city) {
-      var requestString = "http://api.openweathermap.org/data/2.5/weather?"
-                        + "lat="
-                        + lat
-                        + "&lon="
-                        + lon
-                        + "&APPID="
-                        + openWeatherMapKey;
-      console.log(requestString);
-      var city = city;
-      var request = new XMLHttpRequest();
-      request.onload = processResults;
-      request.open("get", requestString, true);
-      request.send();
-}
 
 var processResults = function() {
   var tempJson = JSON.parse(this.responseText);
   var temp = tempJson.main.temp;
   document.getElementById("temperature").innerHTML = temp;
 }
-
-var runsOnce = function() {
-  runsOnce = function() {};
-  getWeather();
-}
-
-
-//window.onload = runsOnce;
 */
