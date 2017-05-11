@@ -17,7 +17,9 @@ var getWeather = function(lat, lon) {
   request.get(targetURL, function(error, response, body) {
     if (error) throw error;
     var resultsWeather = JSON.parse(body);
-    console.log("Temperature is: " + (resultsWeather.main.temp-273)); // convert farenheit to celsius
+    console.log("Temperature is: " + (resultsWeather.main.temp-273).toFixed(2) + "ºC"); // convert farenheit to celsius
+    console.log("Umidity is: " + resultsWeather.main.humidity + "%"); // convert farenheit to celsius
+    console.log(resultsWeather);
   });
 }
 
@@ -36,26 +38,12 @@ getIP(ipAPIURL, getWeather);
 
 
 /*
-
 setInterval(function(targetURL) {
   requestTargetURL(targetURL);
 }, testTime);
 
-
-
 // create callback in getCity to redirect to requestTargetURL when completed
 // http://stackoverflow.com/questions/2190850/create-a-custom-callback-in-javascript
-
-
-var processLocale = function() {
-  var apiIP = JSON.parse(this.responseText);
-  var city = apiIP.city;
-  var lat = apiIP.lat;
-  var lon = apiIP.lon;
-  document.getElementById("cidade").innerHTML = city;
-  getTemperature(lat, lon, city);
-}
-
 
 var processResults = function() {
   var tempJson = JSON.parse(this.responseText);
