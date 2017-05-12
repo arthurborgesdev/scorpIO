@@ -15,11 +15,12 @@ var getWeather = function(lat, lon) {
                     + "&APPID="
                     + openWeatherMapKey;
   request.get(targetURL, function(error, response, body) {
-    if (error) throw error;
+    //if (error) throw error;
     var resultsWeather = JSON.parse(body);
     console.log("Temperature is: " + (resultsWeather.main.temp-273).toFixed(2) + "ºC"); // convert farenheit to celsius
     console.log("Umidity is: " + resultsWeather.main.humidity + "%"); // convert farenheit to celsius
-    console.log(resultsWeather);
+    //console.log("lat: " + lat + "  lon: " + lon);
+    //console.log(resultsWeather);
   });
 }
 
@@ -33,8 +34,10 @@ var getIP = function(ipAPIURL, callback) {
 
 }
 
+setInterval(function() {
+  getIP(ipAPIURL, getWeather);
+}, 10000);
 
-getIP(ipAPIURL, getWeather);
 
 
 /*
