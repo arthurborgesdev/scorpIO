@@ -6,7 +6,7 @@ var http = require("http");
 
 
 function onInit() {
-  var testTime = 60000 * 5; // min * qtd -> 5 min
+  var testTime = 60000 * 1; // min * qtd -> 1 min
   var initialPage = [
     '<!DOCTYPE html>',
     '<html>',

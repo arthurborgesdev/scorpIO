@@ -1,7 +1,7 @@
 var request = require("request");
 var HourMs = 3600000;
 var timeOfRequest = 1 * HourMs;
-var testTime = 10000;
+var testTime = 60000; // 1 minute
 
 var openWeatherMapKey = "9f40801a18714bf398604207e50a336a";
 var ipAPIURL = "http://ip-api.com/json";
@@ -36,7 +36,7 @@ var getIP = function(ipAPIURL, callback) {
 
 setInterval(function() {
   getIP(ipAPIURL, getWeather);
-}, 10000);
+}, testTime);
 
 
 
